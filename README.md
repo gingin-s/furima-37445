@@ -11,18 +11,14 @@
 | last_name             | string         | null: false                 |
 | first_name_kana       | string         | null: false                 |
 | last_name_kana        | string         | null: false                 |
-| birth_year_id         | integer        | null: false                 |
-| birth_month_id        | integer        | null: false                 |
-| birth_dates_id        | integer        | null: false                 |
+| birthday              | data           | null: false                 |
+
 
 
 ### Association
 
 - has_many :items
 - has_many :orders
-- belongs_to :birth_year
-- belongs_to :birth_month
-- belongs_to :birth_date
 
 ## itemsテーブル
 
@@ -30,7 +26,7 @@
 |-----------------------|----------------|--------------------------------|
 | title                 | string         | null: false                    |
 | description           | text           | null: false                    |
-| price                 | text           | null: false                    |
+| price                 | integer        | null: false                    |
 | category_id           | integer        | null: false                    |
 | condition_id          | integer        | null: false                    |
 | postage_id            | integer        | null: false                    |
@@ -42,11 +38,6 @@
 
 - has_one :order
 - belongs_to :user
-- belongs_to :category_id
-- belongs_to :condition_id
-- belongs_to :postage_id
-- belongs_to :prefecture_id
-- belongs_to :shipping_date_id
 
 ## ordersテーブル
 
@@ -68,7 +59,7 @@
 | post_code             | string         | null: false                    |
 | city                  | string         | null: false                    |
 | address               | string         | null: false                    |
-| building_name         | string         | null: false                    |
+| building_name         | string         |                                |
 | phon_number           | string         | null: false                    |
 | prefecture_id         | integer        | null: false                    |
 | order                 | references     | null: false, foreign_key: true |
@@ -76,4 +67,3 @@
 ### Association
 
 - belongs_to :order
-- belongs_to :prefecture_id
