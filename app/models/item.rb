@@ -7,10 +7,12 @@ class Item < ApplicationRecord
   belongs_to :Shipping_date
 
   belongs_to :user
+  has_one_attached :image
 
   with_options presence: true do
   validates :title
   validates :description
+  validates :image
   validates :price, nemericality: { in: 300..9999999, allow_blank: true }
   end
 
