@@ -13,7 +13,7 @@ class Item < ApplicationRecord
     validates :title
     validates :description
     validates :image
-    validates :price, nemericality: { in: 300..9999999, allow_blank: true }
+    validates :price, numericality: { in: 300..9999999, allow_blank: true }
   end
 
   with_options numericality: { other_than: 1, message: "can't be blank"} do
