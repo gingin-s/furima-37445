@@ -1,4 +1,4 @@
-class Shipping_date < ActiveHash::Base
+class ShippingOn< ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
 
