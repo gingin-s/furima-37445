@@ -13,10 +13,10 @@ class Item < ApplicationRecord
     validates :title
     validates :description
     validates :image
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, allow_blank: true }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, allow_blank: true }
   end
 
-  with_options numericality: { other_than: 1, message: "can't be blank"} do
+  with_options numericality: { other_than: 1, message: "can't be blank" } do
     validates :category_id
     validates :condition_id
     validates :postage_id

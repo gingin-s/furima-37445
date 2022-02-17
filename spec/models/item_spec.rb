@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
   end
   describe '商品の登録' do
     context '商品が登録できる場合' do
-      it "title,describe,priceと、各商品の詳細,ユーザー情報が存在すれば登録できる" do
+      it 'title,describe,priceと、各商品の詳細,ユーザー情報が存在すれば登録できる' do
         expect(@item).to be_valid
       end
     end
@@ -59,27 +59,27 @@ RSpec.describe Item, type: :model do
       it 'priceeが半角でないと登録できない' do
         @item.price = '５０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceeが数字でないと登録できない' do
         @item.price = 'abcdef'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it 'priceeが299以下では登録できない' do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@item.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
       it 'priceeが10000000以上では登録できない' do
         @item.price = '10000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@item.errors.full_messages).to include('Price must be less than or equal to 9999999')
       end
       it 'ユーザーが紐付いていないと登録できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
