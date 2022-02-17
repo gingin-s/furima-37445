@@ -1,4 +1,7 @@
 class Shipping_date < ActiveHash::Base
+  include ActiveHash::Associations
+  has_many :items
+
   self.data = [
     {id: 1, name: "--"},
     {id: 2, name: "1~2日で発送"},
