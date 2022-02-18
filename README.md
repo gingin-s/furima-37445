@@ -31,7 +31,7 @@
 | condition_id          | integer        | null: false                    |
 | postage_id            | integer        | null: false                    |
 | prefecture_id         | integer        | null: false                    |
-| shipping_date_id      | integer        | null: false                    |
+| shipping_on_id        | integer        | null: false                    |
 | user                  | references     | null: false, foreign_key: true |
 
 ### Association
@@ -48,11 +48,11 @@
 
 ### Association
 
-- has_one :ship_address
+- has_one :shipping_address
 - belongs_to :item
 - belongs_to :user
 
-## ship_addressesテーブル
+## shipping_addressesテーブル
 
 | Column                | Type           | Options                        |
 |-----------------------|----------------|--------------------------------|
@@ -60,7 +60,7 @@
 | city                  | string         | null: false                    |
 | address               | string         | null: false                    |
 | building_name         | string         |                                |
-| phon_number           | string         | null: false                    |
+| phone_number          | string         | null: false                    |
 | prefecture_id         | integer        | null: false                    |
 | order                 | references     | null: false, foreign_key: true |
 
