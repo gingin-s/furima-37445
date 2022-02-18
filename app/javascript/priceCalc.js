@@ -4,7 +4,7 @@ function priceCalc (){
     const addTaxPrice = document.getElementById("add-tax-price");
     const profit = document.getElementById("profit")
     addTaxPrice.innerHTML = commissionCalk(itemPrice.value);
-    profit.innerHTML = (itemPrice.value - commissionCalk(itemPrice.value));
+    profit.innerHTML = (Math.floor(itemPrice.value - commissionCalk(itemPrice.value)));
   });
   
 };
@@ -12,6 +12,6 @@ function priceCalc (){
 window.addEventListener('load', priceCalc)
 
 function commissionCalk(price){
-  const commission = parseInt(price / 10, 10);
+  const commission = Math.floor(price / 10);
   return commission;
 };
