@@ -2,7 +2,8 @@ class OrderInfo
   include ActiveModel::Model
   attr_accessor :user_id, :item_id
   attr_accessor :post_code, :city, :address, :building_name, :phone_number, :prefecture_id, :order_id
-
+  attr_accessor :token
+  
   with_options presence: true do
     validates :item_id
     validates :user_id
@@ -10,6 +11,7 @@ class OrderInfo
     validates :city
     validates :address
     validates :phone_number, format: {with: /\A[0-9]{10,11}\z/, allow_blank: true, message: "is invalid. Input half-width 10 to 11 digits numbers."}
+    validates :token
   end
 
   validates :prefecture_id, numericality: { other_than: 1, message: "can't be blank" }
