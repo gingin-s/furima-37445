@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :move_to_index_if_sold_out
+  before_action :set_item, only: [:index, :create]
   def index
-    @item = Item.find(params[:item_id])
     @order_info = OrderInfo.new
   end
 
@@ -13,7 +13,6 @@ class OrdersController < ApplicationController
       @order_info.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -29,6 +28,10 @@ class OrdersController < ApplicationController
     params.require(:order_info).permit(:post_code, :city, :address, :building_name, :phone_number, :prefecture_id).merge(
       item_id: params[:item_id], user_id: current_user.id, token: params[:token]
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   # カード決済処理
