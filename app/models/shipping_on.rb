@@ -1,6 +1,7 @@
 class ShippingOn < ActiveHash::Base
   include ActiveHash::Associations
   has_many :items
+  has_many :shipping_addresses
 
   self.data = [
     { id: 1, name: '--' },

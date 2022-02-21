@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update]
+  before_action :move_to_index_if_sold_out, only: [:edit, :update, :destroy]
+
   def index
-    # 登録が新しい順で取得
-    @items = Item.order('created_at DESC')
+    @items = Item.order('created_at DESC').includes(:order)
   end
 
   def new
@@ -51,5 +52,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_index_if_sold_out
+    redirect_to root_path if Order.find_by(item_id: params[:id])
   end
 end
