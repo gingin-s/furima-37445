@@ -7,6 +7,6 @@ FactoryBot.define do
     phone_number { '08012345678' }
     prefecture_id { Prefecture.find_by(name: '東京都').id }
 
-    token {"tok_abcdefghijk00000000000000000"}
+    token { 'tok_abcdefghijk00000000000000000' }
   end
 end

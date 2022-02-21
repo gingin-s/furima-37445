@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update]
   before_action :move_to_index_if_sold_out, only: [:edit, :update, :destroy]
-  
+
   def index
     @items = Item.order('created_at DESC').includes(:order)
   end
@@ -55,8 +55,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index_if_sold_out
-    if Order.find_by(item_id: params[:id])
-      redirect_to root_path
-    end
+    redirect_to root_path if Order.find_by(item_id: params[:id])
   end
 end

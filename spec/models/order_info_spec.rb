@@ -36,22 +36,22 @@ RSpec.describe OrderInfo, type: :model do
       it 'post_codeは全角では登録できない' do
         @order_info.post_code = '１２３−４５６７'
         @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_info.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it 'post_codeはハイフン(-)無しでは登録できない' do
         @order_info.post_code = '1234567'
         @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_info.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it 'post_codeはハイフン(-)の前が3桁以外では登録できない' do
         @order_info.post_code = '1234-567'
         @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_info.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it 'post_codeはハイフン(-)の後が4桁以外では登録できない' do
         @order_info.post_code = '123-456'
         @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Post code is invalid. Include hyphen(-)")
+        expect(@order_info.errors.full_messages).to include('Post code is invalid. Include hyphen(-)')
       end
       it 'cityが空では登録できない' do
         @order_info.city = ''
@@ -71,17 +71,17 @@ RSpec.describe OrderInfo, type: :model do
       it 'phone_numberが数字以外を含むと登録できない' do
         @order_info.phone_number = '080-1234-5678'
         @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Phone number is invalid. Input half-width 10 to 11 digits numbers")
+        expect(@order_info.errors.full_messages).to include('Phone number is invalid. Input half-width 10 to 11 digits numbers')
       end
       it 'phone_numberが全角では登録できない' do
         @order_info.phone_number = '０８０１２３４５６７８'
         @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Phone number is invalid. Input half-width 10 to 11 digits numbers")
+        expect(@order_info.errors.full_messages).to include('Phone number is invalid. Input half-width 10 to 11 digits numbers')
       end
       it 'phone_numberが10~11桁以外では登録できない' do
         @order_info.phone_number = '080123456789'
         @order_info.valid?
-        expect(@order_info.errors.full_messages).to include("Phone number is invalid. Input half-width 10 to 11 digits numbers")
+        expect(@order_info.errors.full_messages).to include('Phone number is invalid. Input half-width 10 to 11 digits numbers')
       end
       it 'tokenが空では登録できない' do
         @order_info.token = ''
@@ -100,5 +100,4 @@ RSpec.describe OrderInfo, type: :model do
       end
     end
   end
-
 end
