@@ -78,7 +78,12 @@ RSpec.describe OrderInfo, type: :model do
         @order_info.valid?
         expect(@order_info.errors.full_messages).to include('Phone number is invalid. Input half-width 10 to 11 digits numbers')
       end
-      it 'phone_numberが10~11桁以外では登録できない' do
+      it 'phone_numberが9桁以下では登録できない' do
+        @order_info.phone_number = '03123456'
+        @order_info.valid?
+        expect(@order_info.errors.full_messages).to include('Phone number is invalid. Input half-width 10 to 11 digits numbers')
+      end
+      it 'phone_numberが12桁以上では登録できない' do
         @order_info.phone_number = '080123456789'
         @order_info.valid?
         expect(@order_info.errors.full_messages).to include('Phone number is invalid. Input half-width 10 to 11 digits numbers')
